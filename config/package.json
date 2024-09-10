@@ -1,0 +1,17 @@
+{
+  "name": "config",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.1",
+    "tailwindcss-animate": "^1.0.6"
+  },
+  "exports": {
+    "./tailwind": "./tailwind.config.js",
+    "./postcss": "./postcss.config.js"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "today-next",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "app",
+    "ui",
+    "config",
+    "next-craftcms"
+  ],
+  "scripts": {
+    "dev": "yarn workspace app run dev -p 3010",
+    "build": "yarn workspace app run build",
+    "start": "yarn workspace app run start -p 3010",
+    "lint": "eslint \"app/**/*.{js,jsx,ts,tsx}\"  \"ui/**/*.{js,jsx,ts,tsx}\" --fix",
+    "storybook": "yarn workspace ui run storybook",
+    "deploy": "sst deploy",
+    "remove": "sst remove",
+    "airtable-sync": "npx ts-node --esm -r tsconfig-paths/register ./airtableSync.ts",
+    "export": "yarn workspace app run export"
+  },
+  "devDependencies": {
+    "@types/showdown": "^2.0.6",
+    "airtable": "^0.12.2",
+    "aws-cdk-lib": "2.84.0",
+    "constructs": "10.1.156",
+    "showdown": "^2.1.0",
+    "sst": "^2.22.6"
+  }
+}

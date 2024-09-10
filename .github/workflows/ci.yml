@@ -1,0 +1,41 @@
+name: Deploy to stage
+on:
+  push:
+    branches:
+      # - develop
+      - staging
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy SST APP
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: "./"
+
+      - name: Use Node.JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: DEVELOP - Deploy SST application
+        if: github.ref == 'refs/heads/develop'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.DEV_AWS_DEFAULT_REGION }}
+        run: yarn deploy --stage dev
+
+      - name: PROD - Deploy SST application
+        if: github.ref == 'refs/heads/main'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.PROD_AWS_DEFAULT_REGION }}
+        run: yarn deploy --stage prod

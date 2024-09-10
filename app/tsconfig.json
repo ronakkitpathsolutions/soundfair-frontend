@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true,
+    "strict": false,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@ui/*": ["../ui/src/*"],
+      "@api/*": ["../api/src/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "types": ["react/next"],
+    "strictNullChecks": false
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
+}

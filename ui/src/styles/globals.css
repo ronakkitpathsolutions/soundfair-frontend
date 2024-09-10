@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@layer utilities {
+  /* Taken from https://dev.to/afif/a-multi-line-css-only-typewriter-effect-3op3 */
+  .transition-typewriter {
+    color: #0000;
+    background: linear-gradient(-90deg, #f1eff5 5px, #0000 0) 10px 0,
+      linear-gradient(#f1eff5 0 0) 0 0;
+    background-size: calc(var(--n) * 1ch) 200%;
+    -webkit-background-clip: padding-box, text;
+    background-clip: padding-box, text;
+    background-repeat: no-repeat;
+    animation: b 0.7s infinite steps(1),
+      t calc(var(--n) * 0.03s) steps(var(--n)) forwards;
+  }
+
+  @keyframes t {
+    from {
+      background-size: 0 200%;
+    }
+  }
+  @keyframes b {
+    50% {
+      background-position: 0 -100%, 0 0;
+    }
+  }
+}
+
+html {
+  @apply bg-white text-black antialiased;
+  /* Hide scrollbars*/
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbars*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+.h-screen {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.min-h-screen {
+  min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+.number-point {
+  @apply my-3 flex flex-row items-center;
+  font-size: 18px;
+}
+
+.number-point > span {
+  @apply flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-black;
+  margin-right: 10px;
+}
+
+ul {
+  @apply ml-5 list-disc;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@media print {
+  body {
+    margin: 0 !important;
+  }
+}
+
+.main-container {
+  font-family: 'Lato';
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1rem;
+}
+
+.ck-content {
+  font-family: 'Lato';
+  line-height: 1.6;
+  word-break: break-word;
+  max-height: 200px;
+  min-height: 200px;
+}
+
+/* Profile.module.css */
+
+.scrollableContainer {
+  overflow-y: auto;
+  max-height: 30rem; /* Adjust the height as needed */
+}
+
+/* Webkit browsers (e.g., Chrome, Safari) */
+.scrollableContainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollableContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+}
+
+.scrollableContainer::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Firefox */
+.scrollableContainer {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+/* Edge, Internet Explorer */
+.scrollableContainer {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+

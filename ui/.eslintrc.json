@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "../.eslintrc.json"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "next": {
+      "rootDir": "./"
+    }
+  }
+}
